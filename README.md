@@ -1,2 +1,0 @@
-# ShortestPathFinalProject
-CS311
