@@ -1,13 +1,4 @@
-/*****************************************************
-Template prepared by Kazumi Slott
-CS311
-min heap class
 
-Your name: Alex Parviz
-Your programmer number: 23
-Hours spent making and testing your min heap class: 2
-Any difficulties?:  Some small difficulties remembering how to override the "<<" operator 
-*******************************************************/
 #ifndef MINHEAP_H
 #define MINHEAP_H
 #include <iostream> //for operator<<()
