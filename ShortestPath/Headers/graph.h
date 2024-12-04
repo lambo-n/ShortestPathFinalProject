@@ -12,6 +12,8 @@ Any difficulties?: There were just a lot of variables to keep track of and very 
 #include <iostream>
 #include <queue>
 #include <list>
+#include <string>
+
 using namespace std;
 
 class edge
