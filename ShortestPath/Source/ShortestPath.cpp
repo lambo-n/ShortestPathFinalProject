@@ -9,15 +9,22 @@ using namespace std;
 
 int main(int num_args, char* arg[])
 {
-    cout << "num_args = " << num_args << endl;
-    if (num_args != 2)
+    //there was 1 argument passed to main
+    if (num_args != 3)
     {
-        cout << "Run as follows:   ./a.out number" << endl;
+        cout << "Invalid input, must have 2 arguments" << endl;
         return 1;
     }
 
-    //there was 1 argument passed to main
-    cout << "answer: " << 2 * atoi(arg[1]) << endl;   //arg[0] is a.out, arg[1] is the first argument, which is a c-string. atoi converts a c-string to int
+    cout << "Author: Nathan Lam and Alex Parviz" << endl;
+    cout << "Date: 12/3/2024" << endl;
+    cout << "Course: CS311 (Data structures and Algorithms" << endl;
+    cout << "Description : Program to find the shortest route between cities" << endl;
+    cout << "----------------------------------------------------------------" << endl;
+
+    //arg[0] is a.out, arg[1] is the first argument, arg[2] is second argument
+    cout << "From City: " << arg[1] << " Population: 0" << ", elevation 0" << endl;
+    cout << "To City: " << arg[2] << " Population: 0" << ", elevation 0" << endl;
 
     return 0;
 }
