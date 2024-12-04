@@ -1,5 +1,10 @@
 #include <iostream>
 #include <cstdlib>
+#include "..\Headers\dijkstra.h"
+#include "..\Headers\graph.h"
+#include "..\Headers\minHeap.h"
+
+
 using namespace std;
 
 int main(int num_args, char* arg[])
