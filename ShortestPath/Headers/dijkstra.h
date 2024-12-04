@@ -1,16 +1,4 @@
-/*****************************************************
-Kazumi Slott
-CS311
-Homework on Dijkstra's algorithm
 
-4-19-2024
-
-This file contains code used for Dijkstra's algorithm.
-This implementation is least invasive to the graph and min heap classes.
-
-Min heap has a struct. In min heap class, maintain the property
-using distance by operator overloaded func.
-******************************************************/
 #include <iostream>
 #include <queue>
 #include <stack>
