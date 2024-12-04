@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a3ac4c68-8dec-4a20-a370-5170d444bc13}</ProjectGuid>
+    <ProjectGuid>{B19378D3-1007-4FC4-A191-249A23AE35D7}</ProjectGuid>
     <RootNamespace>ShortestPath</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -127,7 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ShortestPath.cpp" />
+    <ClCompile Include="Resources\passArgToMain.cpp" />
+    <ClCompile Include="Source\ShortestPath.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\city.txt" />
+    <Text Include="Resources\road.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Headers\dijkstra.h" />
+    <ClInclude Include="Headers\graph.h" />
+    <ClInclude Include="Headers\minHeap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

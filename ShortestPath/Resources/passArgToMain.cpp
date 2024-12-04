@@ -3,7 +3,7 @@
 //g++ passArgToMain.cpp
 //mv a.out argDemo
 //Or (be very careful!!) g++ -o argDemo passArgToMain.cpp
-
+/*
 #include <iostream>
 #include <cstdlib>
 using namespace std;
@@ -22,3 +22,4 @@ int main(int num_args, char* arg[])
 
   return 0;
 }
+*/
