@@ -16,6 +16,11 @@ int main(int num_args, char* arg[])
         return 1;
     }
 
+    //Here is where we will probably map arg[1] and arg[2]
+
+
+
+    //Welcome message
     cout << "Author: Nathan Lam and Alex Parviz" << endl;
     cout << "Date: 12/3/2024" << endl;
     cout << "Course: CS311 (Data structures and Algorithms" << endl;
