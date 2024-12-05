@@ -3,6 +3,8 @@
 #include <map>
 #include "map.h"
 #include "graph.h"
+#include "minHeap.h"
+#include "dijkstra.h"
 
 using namespace std;
 
@@ -12,7 +14,7 @@ int main(int num_args, char* arg[])
     string startCityCode = arg[1];
     string endCityCode = arg[2];
 
-    //will be parsed from string, initialized -1 for error handling
+    //initialize -1 for possible error handling
     int startCityID = -1;
     int endCityID = -1;
 
@@ -37,46 +39,45 @@ int main(int num_args, char* arg[])
 
     //get size of cityMap and initialize graph
     int numCities = cityMap.size();
-    graph citiesGraph(numCities);
+    graph cityGraph(numCities);
 
     //add edges to graph from roads.txt
-    AddRoadsToGraph(citiesGraph);
+    AddRoadsToGraph(cityGraph);
 
-    //get startCityID
-    for (const auto& city : cityMap)
+    //try catch for error handling, cityID doesnt match any key in cityMap
+    try
     {
-        if (city.second.cityCode == startCityCode)
-        {
-            startCityID = city.first;
-            break;
-        }
+        //search map for key that matches the 2 given cityIDs
+        startCityID = getCityID(startCityCode, cityMap);
+        endCityID = getCityID(endCityCode, cityMap);
     }
-
-    //get endCityID
-    for (const auto& city : cityMap)
+    catch(string invalidCityCode)
     {
-        if (city.second.cityCode == endCityCode)
-        {
-            endCityID = city.first;
-            break;
-        }
-    }
-
-    //error handling, usually problem reading input file
-    if (startCityID == -1 || endCityID == -1)
-    {
-        cerr << "Error parsing string arguments to integers" << endl;
-        return 1;
+        cout << "Invalid city code: " << invalidCityCode << endl;
+        return -1;
     }
 
     //arg[0] is a.out, arg[1] is the first argument, arg[2] is second argument
     cout << "From City: " << cityMap[startCityID].cityName << ", population " << cityMap[startCityID].pop << ", elevation " << cityMap[startCityID].elev << endl;
     cout << "To City: " << cityMap[endCityID].cityName << ", population " << cityMap[endCityID].pop << ", elevation " << cityMap[endCityID].elev << endl;
 
-    //print out shortest route from start to end
-    //The shortest distance from ANAHEIM to BAKERSFIELD is 225
-    //through the route : ANAHEIM->VICTORVILLE->CHINO->GRPVE->ISABELLA->BAKERSFIELD
+    //calculate shortest route from start to end using DijkstraShortestPath()
+    //DijkstraShortestPath() calls ShowShortestDistance() which prints out the total distance and route
+    //try-catch for error handling to catch "no possible route" exception
+    try 
+    {
+        DijkstraShortestPath(cityGraph, startCityID, endCityID, cityMap);
+    }
+    catch (string errorMsg)
+    {
+        cout << "No route from " << errorMsg << endl;
+        return 1;
+    }
 
+    //changed only Dijkstra.h arguments to pass endCityID and cityMap through DijkstraShortestPath, then passed again to showShortestPath()
+    //did this so I can handle the printing in  showShortestPath since it uses the locator[] array. 
+    //showShortestPath() only changed the cout << lines to match the project documentation
+    //literally only had to add one line, fix the easy errors and it worked
 
     return 0;
 }

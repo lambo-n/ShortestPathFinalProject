@@ -80,40 +80,54 @@ void printHeapArrays(const minHeap<vertex>& h, const int* locator, int num_ver)
 //This function shows the shortest path from start to destination in the following format.
 //  The shortest path from 3 to 5 is 3 0 4 5
 //  The distance is 8
-void showShortestDistance(const minHeap<vertex>& MH, int start)
+void showShortestDistance(const minHeap<vertex>& MH, int start, int dest, map<int, City>& cityMap)
 {
-  //******  COMPLETE this function  ******
-  
-  int dest; //destination			
+    //trace the shortest path from dest back to start
+    stack<int> path;
+    int top;
+    int totalDistance;
+    string startCityName = cityMap[start].cityName;
+    string destCityName = cityMap[dest].cityName;
 
-  cout << "Enter the destination: ";
-  cin >> dest;
-
-  //trace the shortest path from dest back to start
-  //I suggest you use either library's stack or queue. Which one will work
-  
-  stack<int> path;
-  for(int v = dest; v != -1; v = MH.getElem(locator[v]).predecessor){
-    path.push(v);
-  }
-
-  cout << "The shortest path from " << start << " to " << dest << " is ";
- 
-  while (!path.empty()) {
-        cout << path.top() << " "; //Access the top element
-        path.pop(); //Remove the top element
+    for(int v = dest; v != -1; v = MH.getElem(locator[v]).predecessor)
+    {
+        path.push(v);
     }
 
-  cout << endl;
+    //store shortest possible distance from start to end
+    totalDistance = MH.getElem(locator[dest]).curDist;
 
-  cout << "\nThe distance is " << MH.getElem(locator[dest]).curDist << endl;
-  
+    //if this is 9999, we know from curDist being initalized as 9999 that there is no possible route from start to dest
+    //throw start and end so we can print in error handling try-catch
+    if (totalDistance == 9999)
+    {
+        string errorMsg = startCityName + " to " + destCityName;
+        throw (errorMsg);
+    }
+
+    //prints shortest possible distance 
+    cout << "The shortest distance from " << startCityName << " to " << destCityName << " is " << MH.getElem(locator[dest]).curDist << endl;
+
+    cout << "through the route: ";
+    while (!path.empty()) 
+    {
+        top = path.top(); //Access the top element
+        cout << cityMap[top].cityName; //print top element
+        path.pop(); //Remove the top element
+        
+        //checks if its last in the route to add arrow or not
+        if (!path.empty())
+        {
+            cout << "->";
+        }
+    }
+    cout << endl;
 }
 
 //Dijkstra's shortest path algorithm - generating a table that contains the shortest distance from start to every other vertex and the predecessor of each vertex.
 //g is a graph. We will pass the graph created in our client file.
 //start is the start vertex.
-void DijkstraShortestPath(const graph& g, int start)
+void DijkstraShortestPath(const graph& g, int start, int end, map<int, City>& cityMap)
 {
   
   minHeap<vertex> toBeChecked(g.getNumVer()); //Create a min heap of the data type, vertex.
@@ -127,7 +141,7 @@ void DijkstraShortestPath(const graph& g, int start)
     {
       //fill ver (declared above) with 3 values
       ver.vertexNum = i;
-      ver.curDist = 999;
+      ver.curDist = 9999;
       ver.predecessor = -1;
       //call minHeap::insert() to insert each vertex
       toBeChecked.insert(ver);
@@ -190,7 +204,7 @@ void DijkstraShortestPath(const graph& g, int start)
 	 }}}}
 
  
-   showShortestDistance(toBeChecked, start);
+   showShortestDistance(toBeChecked, start, end, cityMap);
 
    delete[] locator;
 }

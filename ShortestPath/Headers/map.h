@@ -44,13 +44,10 @@ map<int, City> CreateCityMap()
 
     //Opens city.txt and reads in cities. 
     //Adds them to a map that uses the city ID as the key and the value is a City struct
-    int count = 0;
     while (finCity >> cityID >> cityCode >> cityName >> pop >> elev)
     {
         cityMap[cityID] = { cityID, cityCode, cityName, pop, elev };
-        count++;
     }
-    cout << count << " cities added to map" << endl;
 
     finCity.close();
 
@@ -71,12 +68,29 @@ void AddRoadsToGraph(graph& citiesGraph)
 
     //Opens roads.txt and reads in roads
     //Adds them to a map that uses the city ID as the key and the value is a City struct
-    int count = 0;
     while (finRoad >> start >> end >> distance)
     {
         citiesGraph.addEdge(start, end, distance);
-        count++;
     }
-    cout << count << " roads added to graph" << endl;;
+
     finRoad.close();
+}
+
+//takes cityCode string input and searches cityMap for matching key
+//return integer key
+int getCityID(string cityCode, map<int, City>& cityMap)
+{
+    int cityID;
+
+    for (const auto& city : cityMap)
+    {
+        if (city.second.cityCode == cityCode)
+        {
+            cityID = city.first;
+            return cityID;
+        }
+    }
+
+    //throw cityCode so that error message can display the invalid cityCode
+    throw(cityCode);
 }
