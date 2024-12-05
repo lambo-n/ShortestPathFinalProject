@@ -127,10 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Resources\passArgToMain.cpp" />
-    <ClCompile Include="Source\ShortestPath.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="Resources\city.txt" />
     <Text Include="Resources\road.txt" />
   </ItemGroup>
@@ -138,6 +134,9 @@
     <ClInclude Include="Headers\dijkstra.h" />
     <ClInclude Include="Headers\graph.h" />
     <ClInclude Include="Headers\minHeap.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\shortestPath.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

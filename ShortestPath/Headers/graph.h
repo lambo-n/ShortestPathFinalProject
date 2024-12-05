@@ -1,12 +1,4 @@
-/****************************
-Templated created by Kazumi Slott
-CS311
 
-Your name: Alexander Parviz
-Your programmer number: 23
-Hours spent: 4.5
-Any difficulties?: There were just a lot of variables to keep track of and very many places for things to go wrong upon runtime. I had an infinite loop issue the first few times I tested ./a.out after compiling, but figured it out I think.
-*****************************/
 #ifndef GRAPH_H
 #define GRAPH_H
 #include <iostream>
@@ -253,16 +245,9 @@ void graph::BFT(int start)
     start = nextUnvisitedNodes(num, start, start+1);
   }while(start != -1);
  
-  //I used do-while to visit all unconnected graphs. Call nextUnvisitedNodes() to check to see if there are more unvisited vertices.
-
-  //Check the specification to figure out what member functions of the queue class you need to use.
-  // https://www.cplusplus.com/reference/queue/queue/
-
-  //You could call show all paths by calling displayQueue()
+  
 
   displayQueue(edges);
-
-  //Don't forget to destroy the dynamic array if you used one
 
    delete[] num;
    
