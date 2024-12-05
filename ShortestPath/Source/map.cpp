@@ -11,16 +11,39 @@
 
 using namespace std;
 
+struct City {
+
+    int cID, pop, elev; //ints city ID, population, and elevation
+    string cName; //strings city code and city name;
+
+
+};
 
 
 int main() {
 
-    map<string, array<string, 4>> cityInfo; //map called cityInfo that will use a string key (like 'AN' or 'BK') to grab info from an array
+    map<string, City> cityInfo; //map called cityInfo that will use a string key (like 'AN' or 'BK') to grab info from an array
 
     ifstream fincity;
+    int cID, pop, elev; //ints city ID, population, and elevation
+    string cCode, cName; //strings city code and city name;
 
+    //Opens city.txt and reads in the 20 cities. Adds them to a map called cityInfo that uses the city code as the key to access the other elements of the struct
+    fincity.open("city.txt");
+    if (!fincity)
+        cout << "Error with opening city text file." << endl;
+    else
+    {
+        fincity >> cID >> cCode >> cName >> pop >> elev;
+        while (finroad)
+        {
+            cityInfo[cCode] = { cID, cName, pop, elev };
+            fincity >> cID >> cCode >> cName >> pop >> elev;
 
+        }
 
+    }
+    fincity.close();
 
     ifstream finroad;
     int c1, c2, rw; //city 1, city 2, road weight
@@ -30,7 +53,7 @@ int main() {
     //Opens road.txt and reads in the 19 roads, adding edges and weights from the roads.
     finroad.open("road.txt");
     if (!finroad)
-        cout << "Error with opening text file." << endl;
+        cout << "Error with opening road text file." << endl;
     else
     {
         finroad >> c1 >> c2 >> rw; 
