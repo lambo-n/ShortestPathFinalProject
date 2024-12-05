@@ -7,3 +7,9 @@
 /ShortestPath/ShortestPath/Debug
 /x64/Debug
 /ShortestPath/x64/Debug
+.vscode/launch.json
+.vscode/c_cpp_properties.json
+.vscode/settings.json
+ShortestPath/a.out
+ShortestPath/build/Debug/outDebug
+ShortestPath/build/Debug/ShortestPath.o

@@ -29,7 +29,6 @@ map<int, City> CreateCityMap()
 {
     map<int, City> cityMap; //map that has all cities from city.txt, key is cityNum and value is a City struct
     ifstream finCity("Resources/city.txt");   //file reader CHANGE TO "city.txt" FOR EMPRESS
-    int numCities = 0;
 
     int cityID, pop, elev; //ints city ID, population, and elevation
     string cityName, cityCode; //strings city name and abbreviation

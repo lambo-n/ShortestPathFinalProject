@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <map>
-#include "map.h"
-#include "graph.h"
-#include "minHeap.h"
-#include "dijkstra.h"
+#include "Headers/map.h"
+#include "Headers/graph.h"
+#include "Headers/minHeap.h"
+#include "Headers/dijkstra.h"
 
 using namespace std;
 
