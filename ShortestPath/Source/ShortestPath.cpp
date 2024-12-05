@@ -3,6 +3,7 @@
 #include "..\Headers\dijkstra.h"
 #include "..\Headers\graph.h"
 #include "..\Headers\minHeap.h"
+#include "map.cpp"
 
 
 using namespace std;
