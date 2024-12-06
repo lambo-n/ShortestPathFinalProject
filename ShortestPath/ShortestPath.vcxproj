@@ -135,7 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Resources\graphClient.cpp" />
-    <ClCompile Include="Source\shortestPath.cpp" />
+    <ClCompile Include="shortestPath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\city.txt">

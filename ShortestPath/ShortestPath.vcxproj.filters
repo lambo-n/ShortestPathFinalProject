@@ -18,7 +18,7 @@
     <ClCompile Include="Resources\graphClient.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
-    <ClCompile Include="Source\shortestPath.cpp">
+    <ClCompile Include="shortestPath.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
