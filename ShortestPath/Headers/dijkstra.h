@@ -35,9 +35,12 @@ bool operator>(const vertex& v1, const vertex& v2)
   return v1.curDist > v2.curDist;
 }
 
-//If you are comparing 2 elements using >= or <= in your min heap class, you will need to make those operator overloaded functions as well.
+/**********************************************************************************
+Swaps two vertices.
 
-//this will be called from your min heap class.
+Paramenter1: vertex& v1, a vertex object
+Parameter 2: vertex& v2, a vertex object
+**********************************************************************************/
 void mySwap(vertex& v1, vertex& v2)
 {
   //swap 2 vertices
@@ -74,12 +77,15 @@ void printHeapArrays(const minHeap<vertex>& h, const int* locator, int num_ver)
   cout << endl;
 }
 
-//This function will show the path from stat to destination
-//MH is the min heap which contains the vertexNum, curDist and precessor of all the vertices created by Dijkstra's algorithm
-//start is the start vertex. Dijkstra's algorithm calculated the shortest distance from start to every other vertex
-//This function shows the shortest path from start to destination in the following format.
-//  The shortest path from 3 to 5 is 3 0 4 5
-//  The distance is 8
+
+/**********************************************************************************
+This function shows the path from start vertex to destination vertex and prints the route city by city
+
+Paramenter1: const minHeap<vertex>& MH, a minHeap object containing the vertices in minHeap status
+Parameter 2: int start, the starting vertex
+Parameter 3: int dest, the destination vertex
+Parameter 4: map<int, City>& cityMap, the map data structure containing the city information
+**********************************************************************************/
 void showShortestDistance(const minHeap<vertex>& MH, int start, int dest, map<int, City>& cityMap)
 {
     //trace the shortest path from dest back to start
@@ -124,9 +130,14 @@ void showShortestDistance(const minHeap<vertex>& MH, int start, int dest, map<in
     cout << endl;
 }
 
-//Dijkstra's shortest path algorithm - generating a table that contains the shortest distance from start to every other vertex and the predecessor of each vertex.
-//g is a graph. We will pass the graph created in our client file.
-//start is the start vertex.
+/**********************************************************************************
+This function performs dijkstra's algorithm on a given graph starting from a given position and ending and a specified point
+
+Paramenter1: const graph& g, a graph object containing the road information
+Parameter 2: int start, the starting vertex
+Parameter 3: int end, the end vertex
+Parameter 4: map<int, City>& cityMap, the map data structure containing the city information
+**********************************************************************************/
 void DijkstraShortestPath(const graph& g, int start, int end, map<int, City>& cityMap)
 {
   

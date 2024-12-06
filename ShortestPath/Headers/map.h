@@ -25,6 +25,10 @@ struct Road
     int start, end, distance;
 };
 
+/**********************************************************************************
+Creates a map of city information by reading in from a text file.
+Returns the newly created map.
+**********************************************************************************/
 map<int, City> CreateCityMap()
 {
     map<int, City> cityMap; //map that has all cities from city.txt, key is cityNum and value is a City struct
@@ -53,6 +57,11 @@ map<int, City> CreateCityMap()
     return cityMap;
 }
 
+/**********************************************************************************
+Fills a graph of road information by reading in from a text file.
+Returns the newly created weighted graph.
+Parameter1: graph& citiesGraph, the graph to be filled
+**********************************************************************************/
 void AddRoadsToGraph(graph& citiesGraph)
 {
     ifstream finRoad("Resources/road.txt");    //file reader
@@ -77,6 +86,12 @@ void AddRoadsToGraph(graph& citiesGraph)
 
 //takes cityCode string input and searches cityMap for matching key
 //return integer key
+/**********************************************************************************
+Takes in a cityCode string as input and searches cityMap for matching key.
+Returns a city ID.
+Parameter1: string cityCode, the city code used to search the map
+Parameter2: map<int, City>& cityMap, the map to be searched
+**********************************************************************************/
 int getCityID(string cityCode, map<int, City>& cityMap)
 {
     int cityID;

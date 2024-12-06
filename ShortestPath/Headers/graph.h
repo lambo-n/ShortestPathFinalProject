@@ -56,7 +56,10 @@ list<edge*>* graph::getVerAr() const{
   return ver_ar; //gets vertex array
 }
 
-//constructor: num is the number of vertices
+/**********************************************************************************
+The function is a constructor for the graph class that initializes a vertex array with the number of vertices.
+Paramenter1: int num, the number of vertices
+**********************************************************************************/
 graph::graph(int num)
 {
   //make a dynamic array with num slots where each slot holds a list object. 
@@ -67,6 +70,9 @@ graph::graph(int num)
 
 }
 
+/**********************************************************************************
+The function is a destructor for the graph class that deletes the vertex array when needed to free up memory
+**********************************************************************************/
 graph::~graph()
 {
   //destroy all the edge objects created in heap                                                                                                        
@@ -86,7 +92,12 @@ graph::~graph()
 }
 
 
-//add an edge from v to u with weight w into the graph
+/**********************************************************************************
+The function adds an edge from vertex v to vertex u with weight w into the graph
+Paramenter1: int v, the vertex number for v
+Parameter 2: int u, the vertex number for u
+Paramenter3: int w, the weight of the edge
+**********************************************************************************/
 void graph::addEdge(int v, int u, int w)
 {
   //We are using the list class from the library. Which member function do you need to use to add a node at the end of the list?
@@ -100,7 +111,10 @@ void graph::addEdge(int v, int u, int w)
   
 }
 
-//I decided to make this function a stand alone function. It doesn't have anything to do with the graph class.                                
+/**********************************************************************************
+The function displays the queue passed to it
+Paramenter1: queue<T>& q, a queue of type T
+**********************************************************************************/
 template<class T>
 void displayQueue(queue<T>& q)
 {
@@ -111,7 +125,10 @@ void displayQueue(queue<T>& q)
     }
 }
 
-//start Traversal at start
+/**********************************************************************************
+The function uses depth first traversal on the graph
+Paramenter1: int start, the starting node
+**********************************************************************************/
 void graph::DFT(int start)
 {
   //The algorithm is in my lecture notes.
@@ -145,10 +162,13 @@ void graph::DFT(int start)
   
 }
 
-//I made the following function to see if there are still unvisited nodes. Start looking at s, which is the one after the vertext we started last time. start point may not be 0. If start was 5, check the num array from index 6 then 7... until a zero is found (you may find a zero at index 1). Next time check from index 2.                                                                                            
-//num is the array of vertices                                                                                                          
-//start is the start vertex                                                                      
-//s is the vertext right after the vertex we started last time                                                                          
+
+/**********************************************************************************
+The function visits the next unvisited vertex in the num array and returns the index of the unvisited vertex
+Paramenter1: int* num, a dynamic num array
+Parameter 2: int start, the starting vertex
+Paramenter3: int s, the starting point right after the vertex we started last time
+**********************************************************************************/
 int graph::nextUnvisitedNodes(int* num, int start, int s)
 {
   //go through the num array from s to see if you find a vertext with num=0. If so, return the index. If all visited, return -1.
@@ -169,6 +189,7 @@ int graph::nextUnvisitedNodes(int* num, int start, int s)
 
 }
 
+
 void graph::DFT_helper(int v, int& i, int* num, queue<string>& q)
 {
   //The algorithm is in my lecture notes
@@ -180,20 +201,20 @@ void graph::DFT_helper(int v, int& i, int* num, queue<string>& q)
   //https://www.cplusplus.com/reference/list/list/end/ 
   //iterator class is nested inside list class
   for (list<edge*>::iterator u = ver_ar[v].begin(); u != ver_ar[v].end(); u++)
-    {
+  {
       int next = (*u)->neighbor;
       //From the example on https://www.cplusplus.com/reference/list/list/end/
       //Notice *u gives you the element of the node pointed to by u. The element is a pointer to an edge object.
       //Between * and -> operator, -> has higher precedence. You need to use () around *u to get the element first.  
 
-      if(num[next] == 0){
+      if (num[next] == 0) {
 
-	//push each path e.g. 0->1 into q. to_string(int) converts int to string. 
-	//to_string() is in c++11, so compile with the option. g++ -std=c++11 graphClient.cpp 
-	q.push(to_string(v) + "->" + to_string((*u)->neighbor));
-	DFT_helper(next, i, num, q);
+          //push each path e.g. 0->1 into q. to_string(int) converts int to string. 
+          //to_string() is in c++11, so compile with the option. g++ -std=c++11 graphClient.cpp 
+          q.push(to_string(v) + "->" + to_string((*u)->neighbor));
+          DFT_helper(next, i, num, q);
       }
-    }
+  }
 }
   /***********************************************************************************************
    **********************************************************************************************
@@ -203,7 +224,10 @@ void graph::DFT_helper(int v, int& i, int* num, queue<string>& q)
    ***********************************************************************************************/
 
 
-//start is the index for the start vertex
+/**********************************************************************************
+ The function uses breadth first traversal on the graph
+ Paramenter1: int start, the starting node
+ **********************************************************************************/
 void graph::BFT(int start)
 {
   //The algorithm is in my lecture notes
